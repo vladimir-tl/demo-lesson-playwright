@@ -1,5 +1,10 @@
 import dotenv from 'dotenv'
-dotenv.config({ path: 'env/prod.env' })
+if (process.env.CI !== 'true') {
+  dotenv.config({ path: 'env/prod.env' })
+  console.log('Running in local environment')
+} else {
+  console.log('Running in CI environment')
+}
 
 if (!process.env.URL || !process.env.USERNAME || !process.env.PASSWORD) {
   throw new Error('Missing required environment variables')
