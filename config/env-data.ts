@@ -1,5 +1,10 @@
-require('dotenv').config({ path: './env/prod.env' })
+import dotenv from 'dotenv'
+dotenv.config({ path: 'env/prod.env' })
 
-export const SERVICE_URL = process.env.URL
-export const USERNAME = process.env.USERNAME
-export const PASSWORD = process.env.PASSWORD
+if (!process.env.URL || !process.env.USERNAME || !process.env.PASSWORD) {
+  throw new Error('Missing required environment variables')
+}
+
+export const SERVICE_URL: string = process.env.URL
+export const USERNAME: string = process.env.USERNAME
+export const PASSWORD: string = process.env.PASSWORD

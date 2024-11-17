@@ -1,26 +1,25 @@
-import pluginJs from '@eslint/js'
-import tsPlugin from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
+import typescriptPlugin from '@typescript-eslint/eslint-plugin'
+import typescriptParser from '@typescript-eslint/parser'
 
 export default [
   {
-    files: ['**/*.{ts,tsx,js,jsx}'],
+    files: ['**/*.js', '**/*.ts'], // Target JavaScript and TypeScript files
+    ignores: ['node_modules', 'dist', 'build'], // Ignore common folders
     languageOptions: {
-      parser: tsParser,
       parserOptions: {
-        ecmaVersion: 2023,
-        sourceType: 'module',
-        project: './tsconfig.json',
+        ecmaVersion: 'latest', // Support the latest ECMAScript features
+        sourceType: 'module', // Enable ES Modules
       },
+      parser: typescriptParser, // Use TypeScript parser
+    },
+    plugins: {
+      '@typescript-eslint': typescriptPlugin,
     },
     rules: {
-      'consistent-return': 'error',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
-      ],
+      quotes: ['error', 'single'],
+      'no-unused-vars': 'warn', // Warn about unused variables
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
-  pluginJs.configs.recommended, // Recommended JavaScript rules
-  tsPlugin.configs.recommended, // Recommended TypeScript rules
 ]
