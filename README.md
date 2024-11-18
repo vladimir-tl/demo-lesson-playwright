@@ -14,12 +14,12 @@ Rename the provided `prod.env.example` file to `prod.env` in the root directory 
 ### Step 2: Fill in the Values
 Open the `prod.env` file and fill in the following fields with the required configuration values:
 
-- **USERNAME**: The username for the service.
-- **PASSWORD**: The password for the service.
+- **TEST_USERNAME**: The username for the service.
+- **TEST_PASSWORD**: The password for the service.
 - **URL**: The base URL for the service.
 
 Example:
 ```plaintext
-USERNAME=myUsername
-PASSWORD=myPassword
+TEST_USERNAME=myUsername
+TEST_PASSWORD=myPassword
 URL=https://example.com
