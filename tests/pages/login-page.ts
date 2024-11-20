@@ -2,6 +2,7 @@ import { Locator, Page } from '@playwright/test'
 import { OrderPage } from './order-page'
 import { SERVICE_URL } from '../../config/env-data'
 import { BasePage } from './base-page'
+import { OrderWithAuthorized } from './order-with-authorized'
 
 export class LoginPage extends BasePage {
   // readonly page: Page
@@ -31,6 +32,15 @@ export class LoginPage extends BasePage {
     await this.fillElement(this.passwordField, password)
     await this.clickElement(this.signInButton)
     return new OrderPage(this.page)
+  }
+
+  async signInandReturnAuthorizedPage(username: string, password: string) {
+    await this.usernameField.fill(username)
+    // await this.passwordField.fill(password)
+    // await this.signInButton.click()
+    await this.fillElement(this.passwordField, password)
+    await this.clickElement(this.signInButton)
+    return new OrderWithAuthorized(this.page)
   }
 
   // continue with the rest of the implementation below
