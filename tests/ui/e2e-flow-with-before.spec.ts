@@ -11,6 +11,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('signIn button disabled when incorrect data inserted', async ({}) => {
+  // implement methods from base page
   await authPage.usernameField.fill(faker.lorem.word(2))
   await authPage.passwordField.fill(faker.lorem.word(7))
   await expect(authPage.signInButton).toBeDisabled()
@@ -28,4 +29,15 @@ test('login with correct credentials and verify order creation page', async ({})
 
 test('login and create order', async ({}) => {
   // implement test
+})
+
+test('verify language at auth page', async ({}) => {
+  await authPage.verifyLanguageSelector()
+  // add footer verifications
+})
+
+test('verify language at order page', async ({}) => {
+  const orderCreationPage = await authPage.signIn(USERNAME, PASSWORD)
+  await orderCreationPage.verifyLanguageSelector()
+  // add footer verifications
 })
