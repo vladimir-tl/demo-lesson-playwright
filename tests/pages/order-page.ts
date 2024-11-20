@@ -1,12 +1,12 @@
 import { Locator, Page } from '@playwright/test'
+import { BasePage } from './base-page'
 
-export class OrderPage {
-  readonly page: Page
+export class OrderPage extends BasePage {
   readonly statusButton: Locator
   // add more locators here
 
   constructor(page: Page) {
-    this.page = page
+    super(page)
     this.statusButton = page.getByTestId('openStatusPopup-button')
   }
 }
