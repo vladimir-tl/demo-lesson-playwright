@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { LoginPage } from '../pages/login-page'
-import { faker } from '@faker-js/faker/locale/ar'
+import { faker } from '@faker-js/faker/locale/en'
 import { PASSWORD, USERNAME } from '../../config/env-data'
 
 test('signIn button disabled when incorrect data inserted', async ({ page }) => {
